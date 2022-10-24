@@ -31,10 +31,13 @@ possible_hands = possible_hands()
 current_seating = {} # hand id to seats
 current_positions = {} # player to int position
 
-def read_files():
+all_files = os.listdir('SteinwayThor/')
+
+
+def read_files(files):
     ''' Get a list of all the files to be parsed then collect data from them '''
-    all_files = os.listdir('SteinwayThor/')
-    for file in all_files:
+    
+    for file in files:
         parse_file(os.path.abspath('SteinwayThor/' + file))
         #get_player_stats()
         #exit()
@@ -252,6 +255,6 @@ def player_acts(line, act):
 
     adjust_player(player, phase, act, in_position, multiway)
 if __name__ == "__main__":
-    read_files()
+    read_files(all_files)
     get_player_stats()
 # print(current_seating[current_hand['id']]) # Currently I'm double printing because the seats are given at the end again with action summary
